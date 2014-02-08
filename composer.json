@@ -1,0 +1,30 @@
+{
+    "name": "zachgarwood/project-versioner",
+    "description": "An auto-versioning tool for your projects",
+    "keywords": ["automatic", "project", "versioning"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Zach Garwood",
+            "email": "zachgarwood@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/zachgarwood/project-versioner/issues",
+        "source": "https://github.com/zachgarwood/project-versioner"
+    },
+    "autoload": {"psr-4": {"ProjectVersioner\\": ["library/", "tests/"]}},
+    "bin": ["binary/prover.php"],
+    "prefer-stable": true,
+    "require": {
+        "php": ">=5.4",
+        "herrera-io/version": "~1.0",
+        "symfony/console": "~2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "satooshi/php-coveralls": "*",
+        "squizlabs/php_codesniffer": "*"
+    }
+}
