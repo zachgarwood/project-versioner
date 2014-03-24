@@ -2,23 +2,22 @@
 
 namespace ProjectVersioner\Vcs;
 
-use Herrera\Version\Builder;
-use Herrera\Version\Dumper; 
-use Herrera\Version\Version; 
-
 class Git implements \ProjectVersioner\VcsInterface
 {
     public function getVersion()
     {
-        exec('git describe --tags', $output);
+        $version = trim(shell_exec('git describe --tags --abbrev=0 2>&1'));
 
-        return (new Builder)->importString($output[0]);
+        if (strpos($version, 'No names found, cannot find anything.') !== false) {
+            $version = '0.0.0';
+        }
+
+        return $version;
     }
 
-    public function setVersion(Version $version)
+    public function setVersion($version)
     {
-        $tag = Dumper::toString($version);
-        exec("git tag -a $tag -m \".\"");
+        exec("git tag -a $version -m \".\"");
         
         return $this->getVersion();
     }

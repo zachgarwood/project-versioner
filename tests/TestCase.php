@@ -15,7 +15,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
     public function getFakeVersion()
     {
-        return '1.2.3-alpha';
+        return '1.2.3';
     }
     
     public function setUp()
@@ -29,6 +29,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
     public function tearDown()
     {
+        chdir(__DIR__ . '/fixtures');
         exec('rm * && rm -rf .git');
     }
 }

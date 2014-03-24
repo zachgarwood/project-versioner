@@ -8,25 +8,25 @@ use Herrera\Version\Version;
 
 class VersionerTest extends TestCase
 {
-    public function testGetVersion()
+    public function testGetCurrentVersion()
     {
         $this->assertSame(
             Dumper::toString((new Builder)->importString($this->getFakeVersion())),
-            Dumper::toString($this->versioner->getVersion())
+            $this->versioner->getCurrentVersion()
         );
     }
 
-    public function testSetVersion()
+    public function testIncrementVersion()
     {
-        $newVersion = (new Builder)->importString('1.2.4-beta');
+        $newVersion = (new Builder)->importString('1.2.4');
         $this->assertNotSame(
-            Dumper::toString($this->versioner->getVersion()),
+            $this->versioner->getCurrentVersion(),
             Dumper::toString($newVersion)
         );
         $this->commitAChange();
         $this->assertSame(
             Dumper::toString($newVersion),
-            Dumper::toString($this->versioner->setVersion($newVersion))
+            $this->versioner->incrementVersion('Patch')
         );
     }
 }

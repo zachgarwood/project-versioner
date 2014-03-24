@@ -2,7 +2,9 @@
 
 namespace ProjectVersioner;
 
-use Herrera\Version\Version;
+use Herrera\Version\Builder;
+use Herrera\Version\Dumper; 
+use Herrera\Version\Version; 
 
 class Versioner
 {
@@ -13,13 +15,28 @@ class Versioner
         $this->vcs = new $vcs;
     }
 
-    public function getVersion()
+    public function getCurrentVersion()
     {
-        return $this->vcs->getVersion();
+        return Dumper::toString($this->getVersion());
     }
 
-    public function setVersion(Version $version)
+    public function incrementVersion($releaseType)
     {
-        return $this->vcs->setVersion($version);
+        $version = $this->getVersion();
+        $version->clearPreRelease();
+        $version->{"increment$releaseType"}();
+        $this->setVersion($version);
+
+        return $this->getCurrentVersion();
+    }
+
+    private function getVersion()
+    {
+        return (new Builder)->importString($this->vcs->getVersion());
+    }
+
+    private function setVersion(Version $version)
+    {
+        return (new Builder)->importString($this->vcs->setVersion(Dumper::toString($version)));
     }
 }

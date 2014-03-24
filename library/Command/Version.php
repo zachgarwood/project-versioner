@@ -20,6 +20,15 @@ class Version extends Command
     protected function execute(InputInterface $in, OutputInterface $out)
     {
         $versioner = new Versioner(new Vcs\Git);
-        $out->writeln("Current version: {$versioner->getVersion()}");
+        $out->writeln("Current version: {$versioner->getCurrentVersion()}");
+        $dialog = $this->getHelperSet()->get('dialog');
+        $releaseTypes = ['M' => 'Major', 'm' => 'Minor', 'p' => 'Patch'];
+        $release = $dialog->select(
+            $out,
+            'What type of release is this?',
+            $releaseTypes,
+            'p'
+        );
+        $out->writeln($versioner->incrementVersion($releaseTypes[$release]));
     }
 }
