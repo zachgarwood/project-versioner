@@ -1,6 +1,5 @@
 #!/usr/bin/php
 <?php
-
 require 'vendor/autoload.php';
 
 use ProjectVersioner\Command;

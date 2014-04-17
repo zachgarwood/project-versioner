@@ -1,5 +1,4 @@
 <?php
-
 namespace ProjectVersioner\Command;
 
 use ProjectVersioner\Vcs;

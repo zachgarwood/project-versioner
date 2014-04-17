@@ -1,5 +1,4 @@
 <?php
-
 namespace ProjectVersioner\Vcs;
 
 class Git implements \ProjectVersioner\VcsInterface
@@ -15,9 +14,9 @@ class Git implements \ProjectVersioner\VcsInterface
         return $version;
     }
 
-    public function setVersion($version)
+    public function setVersion($version, $message = '')
     {
-        exec("git tag -a $version -m \".\"");
+        exec("git tag -a $version -m \"$message\"");
         
         return $this->getVersion();
     }

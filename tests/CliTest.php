@@ -1,5 +1,4 @@
 <?php
-
 namespace ProjectVersioner;
 
 use Symfony\Component\Console\Application;

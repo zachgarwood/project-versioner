@@ -1,5 +1,4 @@
 <?php
-
 namespace ProjectVersioner;
 
 use Herrera\Version\Builder;

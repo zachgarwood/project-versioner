@@ -1,5 +1,4 @@
 <?php
-
 namespace ProjectVersioner;
 
 class TestCase extends \PHPUnit_Framework_TestCase
