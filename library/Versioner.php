@@ -2,8 +2,8 @@
 namespace ProjectVersioner;
 
 use Herrera\Version\Builder;
-use Herrera\Version\Dumper; 
-use Herrera\Version\Version; 
+use Herrera\Version\Dumper;
+use Herrera\Version\Version;
 
 class Versioner
 {
