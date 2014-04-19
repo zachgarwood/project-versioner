@@ -4,6 +4,7 @@ namespace ProjectVersioner;
 use Herrera\Version\Builder;
 use Herrera\Version\Dumper;
 use Herrera\Version\Version;
+use ProjectVersioner\Vcs\VcsInterface;
 
 class Versioner
 {

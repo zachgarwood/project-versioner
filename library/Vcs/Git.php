@@ -1,7 +1,7 @@
 <?php
 namespace ProjectVersioner\Vcs;
 
-class Git implements \ProjectVersioner\VcsInterface
+class Git implements VcsInterface
 {
     public function getVersion()
     {
